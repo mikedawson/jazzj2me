@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="changeme" default="jar" basedir=".">
+    
+    <taskdef resource="antenna.properties"/>
+    
+    <include file="build-wtk-common.xml"/>
+    
+    <target name="init">
+        <property name="wtk.midp.version" value="2.0" />
+        <property name="wtk.cldc.version" value="1.1" />
+        <property name="src" value="src"/>
+        
+        <property name="build.dir" value="build"/>
+        <property name="compiled" value="${build.dir}/compiled"/>
+        <property name="dist.dir" value="dist"/>
+        
+        <mkdir dir="${build.dir}"/>
+        <mkdir dir="${compiled}"/>
+    </target>
+    
+    <target name="jad">
+        <wtkjad jadfile="dist/JazzJ2MEMob.jad" name="JazzJ2ME" vendor="JazzJ2ME" 
+                version="1.5" encoding="UTF-8">
+        </wtkjad>
+    </target>
+    
+    <target name="build" depends="init">
+       <wtkbuild
+            srcdir="${src}" 
+            destdir="${compiled}" 
+            encoding="UTF-8" 
+            source="1.3" 
+            includeAntRuntime="false"
+            bootclasspath="${wtk.active.bootclasspath}"
+        >
+        </wtkbuild>
+    </target>
+    
+    
+    <target name="jar" depends="build,jad">
+        <wtkpackage preverify="true" jarfile="${dist.dir}/JazzJ2MEMob.jar" jadfile="${dist.dir}/JazzJ2MEMob.jad" 
+            bootclasspath="${wtk.active.bootclasspath}">
+            <fileset dir="${compiled}"/>
+        </wtkpackage>
+    </target>
+    
+</project>

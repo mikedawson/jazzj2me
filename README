@@ -1,0 +1,12 @@
+Jazzlib Modified for J2ME
+
+This is JazzLib (Pure Java java.util.zip) modified to work on J2ME.
+
+Original From:
+
+http://sourceforge.net/projects/jazzlib/files/jazzlib/
+
+To build (Using Antenna):
+
+ant -f antenna-build.xml -lib /path/to/antenna
+

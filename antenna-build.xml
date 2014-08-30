@@ -16,6 +16,7 @@
         
         <mkdir dir="${build.dir}"/>
         <mkdir dir="${compiled}"/>
+        <mkdir dir="${dist.dir}"/>
     </target>
     
     <target name="jad">
